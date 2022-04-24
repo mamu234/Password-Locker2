@@ -4,10 +4,12 @@ class User :
    """
 
    userlist = []
-   def __init__(self,user_name,password,phonenumber):
-       self.user_name = user_name
+   def __init__(self,first_name,last_name,password,email, phone_number):
+       self.first_name = first_name
+       self.last_name = last_name
        self.password = password
-       self.phonenumber = phonenumber
+       self.email = email
+       self.phone_number = phone_number
 
    def  save_user(self):
 
