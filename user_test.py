@@ -1,5 +1,5 @@
 import unittest 
-from user import User
+from user import Credentials, User
 # import pyperclip
 
 class TestUser(unittest.TestCase):
@@ -77,7 +77,7 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("Test","user","0721830476","pcmaunda@gmail.com")
+        test_user = User("Test","user","0721830476","pcmaunda@gmail.com","1234")
         test_user.save_user()
 
         user_exists = User.user_exists("0721830476")
@@ -106,6 +106,105 @@ class TestUser(unittest.TestCase):
     # def copy_email(cls,number):
     #     contact_found = User.find_by_number(number)
     #     pyperclip.copy(contact_found.email)
+
+
+class TestCredentials(unittest.TestCase):
+    def setUp(self):
+        '''
+        Set up method to run before each test cases.
+        '''
+        self.new_credential= Credentials("carolyne","Maunda","12345") # create credential object
+
+
+    def test_init(self):
+        '''
+        test_init test case to test if the object is initialized properly
+        '''
+
+        self.assertEqual(self.new_credential.account_username,"carolyne")
+        self.assertEqual(self.new_credential.account_name, "Maunda")
+        self.assertEqual(self.new_credential.account_password,"1234")
+       
+    
+    def test_save_user(self):
+        '''
+        test_save_uer test case to test if the user object is saved into
+         the user list
+        '''
+        self.new_user.save_user() # saving the new user
+        self.assertEqual(len(User.userlist),1)
+
+
+    def tearDown(self):
+            '''
+            tearDown method that does clean up after each test case has run.
+            '''
+            User.userlist = []
+
+    def test_save_multiple_user(self):
+            '''
+            test_save_multiple_user to check if we can save multiple users
+            objects to our user_list
+            '''
+            self.new_user.save_user()
+            test_user = User("Test","user","0721830476","pcmaunda@gmai.com","1234") # new contact
+            test_user.save_user()
+            self.assertEqual(len(User.userlist),2)
+        
+    def test_delete_user(self):
+            '''
+            test_delete_user tests if we can remove a user from our userlist
+            '''
+            self.new_user.save_user()
+            test_user = User("Test","user","0721830476","pcmaunda@gmail.com","1234") # new user
+            test_user.save_user()
+
+            self.new_user.delete_user()# Deleting a user object
+            self.assertEqual(len(User.userlist),1)
+
+    def test_find_user_by_number(self):
+        '''
+        test to check if we can find a contact by phone number and display information
+        '''
+
+        self.new_user.save_user()
+        test_user = User("Test","user","0721830476","pcmaunda@gmail.com","1234") # new user
+        test_user.save_user()
+
+        found_user = User.find_by_number("0721830476")
+
+        self.assertEqual(found_user,test_user.phone_number)
+
+
+    def test_user_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the cuser.
+        '''
+
+        self.new_user.save_user()
+        test_user = User("Test","user","0721830476","pcmaunda@gmail.com","1234")
+        test_user.save_user()
+
+        user_exists = User.user_exists("0721830476")
+
+        self.assertTrue(user_exists)
+    
+    
+    def test_display_all_users(self):
+        '''
+        method that returns a list of all users saved
+        '''
+
+        self.assertEqual(User.display_users(),User.userlist)
+
+    def test_copy_email(self):
+        '''
+        Test to confirm that we are copying the email address from a found user
+        '''
+
+        self.new_user.save_user()
+        User.copy_email("0721830476")
+
 
 
 if __name__ == '__main__':
