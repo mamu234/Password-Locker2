@@ -126,13 +126,13 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_credential.account_password,"1234")
        
     
-    def test_save_user(self):
+    def test_save_credential(self):
         '''
-        test_save_uer test case to test if the user object is saved into
-         the user list
+        test_save_credential  test case to test if the credential object is saved into
+         the  accountlist
         '''
-        self.new_user.save_user() # saving the new user
-        self.assertEqual(len(User.userlist),1)
+        self.new_credential.save_account() # saving the new user
+        self.assertEqual(len(Credentials.user_accounts),1)
 
 
     def tearDown(self):
