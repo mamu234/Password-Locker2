@@ -137,9 +137,9 @@ class TestCredentials(unittest.TestCase):
 
     def tearDown(self):
             '''
-            tearDown method that does clean up after each test case has run.
+            tearDown method that does clean up after each test case has  run.
             '''
-            User.userlist = []
+            Credentials.user_accounts = []
 
     def test_save_multiple_user(self):
             '''
