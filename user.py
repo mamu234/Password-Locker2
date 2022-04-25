@@ -1,6 +1,6 @@
 class User :
    """
-   Class that generates news isntance of user
+   Class that generates new instance of user
    """
 
    userlist = []
@@ -28,10 +28,10 @@ class User :
 
 
    @classmethod
-   def find_by_number(cls,phonenumber):
+   def find_by_number(cls,phone_number):
 
        for user in cls.userlist:
-           if user.phonenumber== phonenumber:
+           if User.phone_number == phone_number:
                return True
 
        else:
@@ -40,44 +40,48 @@ class User :
 
 class Credentials:
     """
-    this class generates new isntnaces of Credentials
+    this class generates new instance of Credentials
     """
 
-    accounts =[]
-    def __init__(self,accountusername,accountname,accountpassword):
+    user_accounts =[]
+    def __init__(self,account_username,account_name,account_password):
         """
-        init methos helps define propertie of the object
+        init methos helps define properties of the object
         """
 
-        self.accountusername = accountusername
-        self.accountname = accountname
-        self.accountpassword = accountpassword
+        self.account_username = account_username
+        self.account_name = account_name
+        self.account_password = account_password
     def save_account(self):
         """
         save account method saves user info in the accounts
         """
 
-        Credentials.account.append(self)
+        Credentials.user_accounts.append(self)
+        
 
-    def delete_account(self):
+    def delete_user_account(self):
         """
         delete_account  method removes the saved credentials from accounts
         """
 
-        Credentials.accounts.remove(self)
+        Credentials.user_accounts.remove(self)
+    
     @classmethod
-    def display_accounts(cls):
-        """
-        display_accounts returns a list of the accounts
-        """
-        for account in cls.accounts:
-            return cls.accounts
-        
+    def display_user_accounts(cls):
+     return cls.user_accounts
+
+
     @classmethod
-    def find_by_number(cls,number):
-        """
-        find by number method takes in a number and return a contact if it matches the number
-        """
-        for account in cls.accounts:
-            if account.accountname == number:
-                return 
+    def find_by_account_name(cls,user_accounts):
+
+       for user in cls.user_accounts:
+           if Credentials.user_accounts == user_accounts:
+               return True
+
+       else:
+            for user in cls.user_accounts:
+                cls.user_accounts.remove(user)
+    
+
+             
