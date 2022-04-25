@@ -141,15 +141,15 @@ class TestCredentials(unittest.TestCase):
             '''
             Credentials.user_accounts = []
 
-    def test_save_multiple_user(self):
+    def test_save_multiple_credentials(self):
             '''
-            test_save_multiple_user to check if we can save multiple users
-            objects to our user_list
+            test_save_multiple_credentials to check if we can save multiple crdentials
+            objects to our user_accounts
             '''
-            self.new_user.save_user()
-            test_user = User("Test","user","0721830476","pcmaunda@gmai.com","1234") # new contact
-            test_user.save_user()
-            self.assertEqual(len(User.userlist),2)
+            self.new_credential.save_account()
+            test_credential = Credentials("Test","credential","carolyne","maunda","1234")
+            test_credential.save_account()
+            self.assertEqual(len(Credentials.user_accounts),2)
         
     def test_delete_user(self):
             '''
