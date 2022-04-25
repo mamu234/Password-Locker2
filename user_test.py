@@ -151,16 +151,16 @@ class TestCredentials(unittest.TestCase):
             test_credential.save_account()
             self.assertEqual(len(Credentials.user_accounts),2)
         
-    def test_delete_user(self):
+    def test_delete_credential(self):
             '''
-            test_delete_user tests if we can remove a user from our userlist
+            test_delete_credential tests if we can remove a  credential  from our user_accounts
             '''
-            self.new_user.save_user()
-            test_user = User("Test","user","0721830476","pcmaunda@gmail.com","1234") # new user
-            test_user.save_user()
+            self.new_credential.save_account()
+            test_credential = Credentials("Test","credential","carolyne","maunda","1234")
+            test_credential.save_account()
 
-            self.new_user.delete_user()# Deleting a user object
-            self.assertEqual(len(User.userlist),1)
+            self.new_credential.delete_user_account()# Deleting a user object
+            self.assertEqual(len(Credentials.user_accounts),1)
 
     def test_find_user_by_number(self):
         '''
