@@ -190,20 +190,20 @@ class TestCredentials(unittest.TestCase):
         self.assertTrue(credential_exists)
     
     
-    def test_display_all_users(self):
+    def test_display_all_credentials(self):
         '''
-        method that returns a list of all users saved
+        method that returns a list of all accounts saved
         '''
 
-        self.assertEqual(User.display_users(),User.userlist)
+        self.assertEqual(Credentials.display_credentials(),Credentials.user_accounts)
 
     def test_copy_email(self):
         '''
-        Test to confirm that we are copying the email address from a found user
+        Test to confirm that we are copying the email address from a found account
         '''
 
-        self.new_user.save_user()
-        User.copy_email("0721830476")
+        self.new_credential.save_account()
+        Credentials.copy_email("pcmaunda@gmail.com")
 
 
 
