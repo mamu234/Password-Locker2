@@ -162,18 +162,18 @@ class TestCredentials(unittest.TestCase):
             self.new_credential.delete_user_account()# Deleting a user object
             self.assertEqual(len(Credentials.user_accounts),1)
 
-    def test_find_user_by_number(self):
+    def test_find_credential_by_account(self):
         '''
-        test to check if we can find a contact by phone number and display information
+        test to check if we can find a user crdential by account and display information
         '''
 
-        self.new_user.save_user()
-        test_user = User("Test","user","0721830476","pcmaunda@gmail.com","1234") # new user
-        test_user.save_user()
+        self.new_credential.save_account(self)
+        test_credential = Credentials("Test","credential","carolyne","maunda","1234") 
+        test_credential.save_account()
 
-        found_user = User.find_by_number("0721830476")
+        found_credential = Credentials.find_credential_by_account ("carolyne")
 
-        self.assertEqual(found_user,test_user.phone_number)
+        self.assertEqual(found_credential,test_credential.user_accounts)
 
 
     def test_user_exists(self):
