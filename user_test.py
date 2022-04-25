@@ -176,18 +176,18 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(found_credential,test_credential.user_accounts)
 
 
-    def test_user_exists(self):
+    def test_credential_exists(self):
         '''
-        test to check if we can return a Boolean  if we cannot find the cuser.
+        test to check if we can return a Boolean  if we cannot find the account.
         '''
 
-        self.new_user.save_user()
-        test_user = User("Test","user","0721830476","pcmaunda@gmail.com","1234")
-        test_user.save_user()
+        self.new_credential.save_account()
+        test_credential = Credentials("Test","credential","carolyne","maunda","1234")
+        test_credential.save_account()
 
-        user_exists = User.user_exists("0721830476")
+        credential_exists = Credentials.credential_exists("carolyne")
 
-        self.assertTrue(user_exists)
+        self.assertTrue(credential_exists)
     
     
     def test_display_all_users(self):
