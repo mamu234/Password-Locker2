@@ -31,10 +31,10 @@ class User :
 
 
    @classmethod
-   def find_by_number(cls,number):
+   def find_by_number(cls,phone_number):
 
        for user in cls.userlist:
-           if user.email == email:
+           if user.phone_number == phone_number:
                return user
 
              

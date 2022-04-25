@@ -1,6 +1,6 @@
 import unittest 
 from user import User
-
+# import pyperclip
 
 class TestUser(unittest.TestCase):
     def setUp(self):
@@ -57,7 +57,7 @@ class TestUser(unittest.TestCase):
             self.new_user.delete_user()# Deleting a user object
             self.assertEqual(len(User.userlist),1)
 
-    def test_find_contact_by_number(self):
+    def test_find_user_by_number(self):
         '''
         test to check if we can find a contact by phone number and display information
         '''
@@ -73,16 +73,17 @@ class TestUser(unittest.TestCase):
 
     def test_user_exists(self):
         '''
-        test to check if we can return a Boolean  if we cannot find the  user.
+        test to check if we can return a Boolean  if we cannot find the cuser.
         '''
 
         self.new_user.save_user()
-        test_user = User("Test","user","0711223344","test@user.com","1234") 
+        test_user = User("Test","user","0721830476","pcmaunda@gmail.com")
         test_user.save_user()
 
-        user_exists = User.user_exists("0711223344")
+        user_exists = User.user_exists("0721830476")
 
         self.assertTrue(user_exists)
+    
     
     def test_display_all_users(self):
         '''
@@ -90,6 +91,22 @@ class TestUser(unittest.TestCase):
         '''
 
         self.assertEqual(User.display_users(),User.userlist)
+
+    def test_copy_email(self):
+        '''
+        Test to confirm that we are copying the email address from a found user
+        '''
+
+        self.new_user.save_user()
+        User.copy_email("0721830476")
+
+    #     self.assertEqual(self.new_user.email,pyperclip.paste())
+    
+    # @classmethod
+    # def copy_email(cls,number):
+    #     contact_found = User.find_by_number(number)
+    #     pyperclip.copy(contact_found.email)
+
 
 if __name__ == '__main__':
     unittest.main()
