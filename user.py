@@ -1,3 +1,6 @@
+import email
+
+
 class User :
    """
    Class that generates new instance of user
@@ -28,11 +31,13 @@ class User :
 
 
    @classmethod
-   def find_by_number(cls,phone_number):
+   def find_by_number(cls,number):
 
        for user in cls.userlist:
-           if User.phone_number == phone_number:
-               return True
+           if user.email == email:
+               return user
+
+             
 
        else:
             for user in cls.userlist:
