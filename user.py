@@ -32,10 +32,10 @@ class User :
 
 
    @classmethod
-   def find_by_number(cls,phone_number):
+   def find_by_number(cls,number):
 
        for user in cls.userlist:
-           if user.phone_number == phone_number:
+           if user.phone_number == number:
                return user
 
              
@@ -49,7 +49,7 @@ class Credentials:
     this class generates new instance of Credentials
     """
 
-    user_accounts =[]
+    credentials_list =[]
     def __init__(self,account_username,account_name,account_password,email):
         """
         init methos helps define properties of the object
@@ -59,18 +59,32 @@ class Credentials:
         self.account_name = account_name
         self.account_password = account_password
         self.email = email
-    def save_account(self):
+        
+    def save_credentials(self):
         """
         save account method saves user info in the accounts
         """
 
-        Credentials.user_accounts.append(self)
+        Credentials.credentials_list.append(self)
+    
         
 
     def delete_user_account(self):
         """
         delete_account  method removes the saved credentials from accounts
+
         """
+    def test_copy_email(self):
+        '''
+        Test to confirm that we are copying the email address from a found user
+        '''
+    def test_display_all_credentials(self):
+        '''
+        method that returns a list of all accounts saved
+        '''
+    def test_save_multiple_credentials(self):
+        
+
 
         Credentials.user_accounts.remove(self)
     
@@ -80,10 +94,10 @@ class Credentials:
 
 
     @classmethod
-    def find_by_account_name(cls,user_accounts):
+    def find_by_account_name(cls,number):
 
        for user in cls.user_accounts:
-           if Credentials.user_accounts == user_accounts:
+           if Credentials.user_accounts == number:
                return True
 
        else:
