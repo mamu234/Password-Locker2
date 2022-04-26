@@ -90,7 +90,7 @@ class TestUser(unittest.TestCase):
 
         self.assertEqual(User.display_users(),User.userlist)
 
-    def test_copy_email(self):
+    def copy_email(self):
         '''
         Test to confirm that we are copying the email address from a found user
         '''
@@ -125,7 +125,7 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_credential.email,"pcmaunda@gmail.com")
        
     
-    def save_credentials(self):
+    def test_save_credentials(self):
         '''
         test_save_credential  test case to test if the credential object is saved into
          the  accountlist
@@ -138,17 +138,17 @@ class TestCredentials(unittest.TestCase):
             '''
             tearDown method that does clean up after each test case has  run.
             '''
-            Credentials.user_accounts = []
+            Credentials.credentials_list = []
 
     def test_save_multiple_credentials(self):
             '''
             test_save_multiple_credentials to check if we can save multiple crdentials
             objects to our user_accounts
             '''
-            self.new_credential.save_account()
+            self.new_credential.credentials_list()
             test_credential = Credentials("Test","credential","carolyne","maunda")
-            test_credential.save_account()
-            self.assertEqual(len(Credentials.user_accounts),2)
+            test_credential.credentials_list()
+            self.assertEqual(len(Credentials.credentials_list),2)
         
     def test_delete_credential(self):
             '''

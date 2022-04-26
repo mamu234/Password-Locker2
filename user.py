@@ -1,4 +1,4 @@
-
+import pyperclip
 
 
 class User :
@@ -21,8 +21,11 @@ class User :
         save-user method is used to  create new user objects to the user_list 
         """     
         User.userlist.append(self)
+    
    
    def delete_user(self):# delete method deletes saved user from the userlist
+    
+       
          
        User.userlist.remove(self)
 
@@ -30,6 +33,11 @@ class User :
    def display_users(cls):
        return cls.userlist
 
+   
+   @classmethod
+   def copy_email(cls,number):
+    contact_found = User.find_by_number(number)
+    pyperclip.copy(contact_found.email)
 
    @classmethod
    def find_by_number(cls,number):
@@ -86,23 +94,23 @@ class Credentials:
         
 
 
-        Credentials.user_accounts.remove(self)
+        Credentials.credentials_list.remove(self)
     
     @classmethod
     def display_user_accounts(cls):
-     return cls.user_accounts
+     return cls.credentials_list
 
 
     @classmethod
     def find_by_account_name(cls,number):
 
-       for user in cls.user_accounts:
-           if Credentials.user_accounts == number:
+       for user in cls.credentials_list:
+           if Credentials.credentials_list == number:
                return True
 
        else:
-            for user in cls.user_accounts:
-                cls.user_accounts.remove(user)
+            for user in cls.credentials_list:
+                cls.credentials_list.remove(user)
     
 
              
