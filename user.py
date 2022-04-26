@@ -25,9 +25,11 @@ class User :
    
    def delete_user(self):# delete method deletes saved user from the userlist
     
-       
+ 
          
        User.userlist.remove(self)
+
+
 
    @classmethod
    def display_users(cls):
@@ -75,42 +77,35 @@ class Credentials:
 
         Credentials.credentials_list.append(self)
     
-        
 
-    def delete_user_account(self):
+    def delete_credentials(self):
         """
         delete_account  method removes the saved credentials from accounts
 
         """
-    def test_copy_email(self):
+    def copy_email(self):
         '''
         Test to confirm that we are copying the email address from a found user
         '''
-    def test_display_all_credentials(self):
+    def display_all_credentials(self):
         '''
         method that returns a list of all accounts saved
         '''
-    def test_save_multiple_credentials(self):
+    def save_multiple_credentials(self):
+    
+    
         
 
 
         Credentials.credentials_list.remove(self)
     
-    @classmethod
-    def display_user_accounts(cls):
-     return cls.credentials_list
 
 
-    @classmethod
-    def find_by_account_name(cls,number):
+    
+  
 
-       for user in cls.credentials_list:
-           if Credentials.credentials_list == number:
-               return True
 
-       else:
-            for user in cls.credentials_list:
-                cls.credentials_list.remove(user)
+   
     
 
              
