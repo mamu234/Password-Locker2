@@ -12,26 +12,25 @@ def save_user(user):
     '''
     Function to save user
     '''
-    user.save_user()
 
 def del_user(user):
     '''
     Function to delete a user
     '''
-    user.delete_user()
+   
 
-def find_user(number):
+def find_all_users(number):
     '''
     Function that finds a user by number and returns the user
     '''
-    return User.find_by_number(number)
+    return User.find_all_users(number)
 
 
 def check_existing_users(number):
     '''
     Function that check if a user exists with that number and return a Boolean
     '''
-    return User.user_exist(number)
+    return User.update_first_name(number)
 
 
 def display_users():
@@ -39,7 +38,7 @@ def display_users():
     Function that returns all the saved users
     '''
     return User.display_users()
-
+  
 
 def main():
     print("Hello Welcome to your userlist. What is your name?")
@@ -79,12 +78,12 @@ def main():
         
         elif short_code == 'dc':
 
-                if display_users():
+                if find_all_users():
                         print("Here is a list of all your users")
                         print('\n')
 
-                        for user in display_users():
-                         print(f"{user.first_name} {user.last_name} .....{user.phone_number}")
+                        for user in display_users(user):
+                         print(f"{user.first_name} {user.last_name} .....{user.phone_number} {email} {password}  ")
 
                          print('\n')
                 else:
@@ -98,7 +97,7 @@ def main():
 
                search_number = input()
                if check_existing_users(search_number):
-                        search_user = find_user(search_number)
+                        search_user = find_all_users(search_number)
                         print(f"{search_user.first_name} {search_user.last_name}")
                         print('-' * 20)
 
