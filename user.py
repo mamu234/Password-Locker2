@@ -62,7 +62,46 @@ class User:
             else: return False
 
 
- 
+    @classmethod
+    def find_all_users(cls):
+        return cls.userlist
+
+    # We can use this method to update first_name after we have saved our instance in the list
+    # We loop through the list and find the instance with the id that matches the one we are interested in changing its first name
+    @classmethod
+    def update_first_name(cls, id, name):
+        for user in cls.userlist:
+            if user.id == id:
+                user.first_name = name
+
+    # We can use this method to update last_name after we have saved our instance in the list
+    # We loop through the list and find the instance with the id that matches the one we are interested in changing its last name
+    @classmethod
+    def update_last_name(cls, id, name):
+        for user in cls.userlist:
+            if user.id == id:
+                user.last_name = name
+
+    # We can use this method to update phone_number after we have saved our instance in the list
+    # We loop through the list and find the instance with the id that matches the one we are interested in changing its phone_number
+    @classmethod
+    def update_phone_number(cls, id, phone_number):
+        for user in cls.userlist:
+            if user.id == id:
+                user.phone_number = phone_number
+
+    # We can use this method to update email after we have saved our instance in the list
+    # We loop through the list and find the instance with the id that matches the one we are interested in changing its email
+    @classmethod
+    def update_email(cls, id, email):
+        for user in cls.userlist:
+            if user.id == id:
+                user.email = email
+    @classmethod
+    def update_password(cls, id, password):
+        for user in cls.userlist:
+            if user.id == id:
+                user.password = password
     
    
              
