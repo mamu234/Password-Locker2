@@ -1,6 +1,6 @@
 import unittest 
 from user import Credentials, User
-# import pyperclip
+import pyperclip
 
 class TestUser(unittest.TestCase):
     def setUp(self):
@@ -100,12 +100,12 @@ class TestUser(unittest.TestCase):
         self.new_user.save_user()
         User.copy_email("0721830476")
 
-    #     self.assertEqual(self.new_user.email,pyperclip.paste())
+        self.assertEqual(self.new_user.email,pyperclip.paste())
     
-    # @classmethod
-    # def copy_email(cls,number):
-    #     contact_found = User.find_by_number(number)
-    #     pyperclip.copy(contact_found.email)
+    @classmethod
+    def copy_email(cls,number):
+        contact_found = User.find_by_number(number)
+        pyperclip.copy(contact_found.email)
 
 
 class TestCredentials(unittest.TestCase):
@@ -113,7 +113,7 @@ class TestCredentials(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_credential= Credentials("carolyne","Maunda","12345") # create credential object
+        self.new_credential= Credentials("carolyne","Maunda","12345","pcmaunda@gmail.com") # create credential object
 
 
     def test_init(self):
@@ -203,7 +203,14 @@ class TestCredentials(unittest.TestCase):
         '''
 
         self.new_credential.save_account()
-        Credentials.copy_email("pcmaunda@gmail.com")
+        Credentials.copy_email("0721830476")
+
+        self.assertEqual(self.new_credential.email,pyperclip.paste())
+    
+    @classmethod
+    def copy_email(cls,number):
+        contact_found = User.find_by_number(number)
+        pyperclip.copy(contact_found.email)
 
 
 

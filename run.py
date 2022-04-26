@@ -1,18 +1,18 @@
 from user import User
 
 
-def create_user(first_name,last_name,phone_number,email):
+def create_user(first_name,last_name,phone_number,email,password):
     '''
     Function to create a new user
     '''
-    new_user = User(first_name,last_name,phone_number,email)
+    new_user = User(first_name,last_name,phone_number,email,password)
     return new_user
 
-def save_users(user):
+def save_user(user):
     '''
     Function to save user
     '''
-    user.save_users()
+    user.save_user()
 
 def del_user(user):
     '''
@@ -67,11 +67,14 @@ def main():
          phone_number = input()
 
          print("Email address ...")
-         e_address = input()
+         email = input()
         
-         save_users(create_user(first_name,last_name,phone_number,e_address)) # create and save new user
+         print("Password ...")
+         password = input()
+        
+         save_user(create_user(first_name,last_name,phone_number,email,password)) # create and save new user
          print ('\n')
-         print(f"New User {first_name} {last_name} created")
+         print(f"New User {first_name} {last_name} {phone_number} {email} {password} created")
          print ('\n')
         
         elif short_code == 'dc':

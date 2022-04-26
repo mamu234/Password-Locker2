@@ -7,13 +7,13 @@ class User :
    """
 
    userlist = []
-   def __init__(self,first_name,last_name,phone_number,password,email, ):
+   def __init__(self,first_name,last_name,phone_number,email,password ):
        self.first_name = first_name
        self.last_name = last_name
        self.phone_number = phone_number
-       self.password = password
        self.email = email
-       
+       self.password = password
+
    def  save_user(self):
 
         """
@@ -49,7 +49,7 @@ class Credentials:
     """
 
     user_accounts =[]
-    def __init__(self,account_username,account_name,account_password):
+    def __init__(self,account_username,account_name,account_password,email):
         """
         init methos helps define properties of the object
         """
@@ -57,6 +57,7 @@ class Credentials:
         self.account_username = account_username
         self.account_name = account_name
         self.account_password = account_password
+        self.email = email
     def save_account(self):
         """
         save account method saves user info in the accounts
