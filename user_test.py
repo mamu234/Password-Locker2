@@ -3,79 +3,56 @@ from user import  User
 # import pyperclip
 
 class TestUser(unittest.TestCase):
-    def setUp(self):
-        '''
-        Set up method to run before each test cases.
-        '''
-        self.new_user= User("carolyne","Maunda","0721830476","pcmaunda@gmail.com","1234") # create user object
-
-
-    def test_init(self):
-        '''
-        test_init test case to test if the object is initialized properly
-        '''
-
-        self.assertEqual(self.new_user.first_name,"carolyne")
-        self.assertEqual(self.new_user.last_name, "Maunda")
-        self.assertEqual(self.new_user.phone_number,"0721830476")
-        self.assertEqual(self.new_user.email,"pcmaunda@gmail.com")
-        self.assertEqual(self.new_user.password,"1234")
-   
     
-    def test_save_user(self):
-        '''
-        test_save_user test case to test if the user object is saved into
-         the user list
-        '''
-        self.new_user.save_user() # saving the new user
-        self.assertEqual(len(User.userlist),1)
-
-
+    # Setup method runs before every test
+    def setUp(self):
+        self.user= User("Allan", "Walker", "076563738", "allanwarker@gmail.com","1234")
+ 
+    # Teardown method runs after every test
     def tearDown(self):
-            '''
-            tearDown method that does clean up after each test case has run.
-            '''
-            User.userlist = []
+        User.clear_all()
 
-    def test_save_multiple_user(self):
-            '''
-            test_save_multiple_user to check if we can save multiple users
-            objects to our user_list
-            '''
-            self.new_user.save_user()
-            test_user = User("Test","user","0721830476","pcmaunda@gmai.com","1234") # new contact
-            test_user.save_user()
-            self.assertEqual(len(User.userlist),2)
+    # Test if instance is created(The __init__ method)
+    def test_instance_creates_successfully(self):
+        self.assertTrue(isinstance(self.user, User))
+
+    # Test that contact is saved successfully
+    def test_save_user(self):
+        self.user.save()
+        self.assertEqual(len(User.userlist),1)
+        self.assertEqual(User.userlist[0].first_name, self.user.first_name)
+
+    # def tearDown(self):
+    #         '''
+    #         tearDown method that does clean up after each test case has run.
+    #         '''
+    #         User.userlist = []
+
+    # def test_save_multiple_user(self):
+    #         '''
+    #         test_save_multiple_user to check if we can save multiple users
+    #         objects to our user_list
+    #         '''
+    #         self.new_user.save_user()
+    #         test_user = User("Test","user","0721830476","pcmaunda@gmai.com","1234") # new contact
+    #         test_user.save_user()
+    #         self.assertEqual(len(User.userlist),2)
         
-    def test_delete_user(self):
-            '''
-            test_delete_user tests if we can remove a user from our userlist
-            '''
-            self.new_user.save_user()
-            test_user = User("Test","user","0721830476","pcmaunda@gmail.com","1234") # new user
-            test_user.save_user()
+    # def test_delete_user(self):
+    #         '''
+    #         test_delete_user tests if we can remove a user from our userlist
+    #         '''
+    #         self.new_user.save_user()
+    #         test_user = User("Test","user","0721830476","pcmaunda@gmail.com","1234") # new user
+    #         test_user.save_user()
 
-            self.new_user.delete_user()# Deleting a user object
-            self.assertEqual(len(User.userlist),1)
+    #         self.new_user.delete_user()# Deleting a user object
+    #         self.assertEqual(len(User.userlist),1)
 
-#     def test_find_user_by_number(self):
-#         '''
-#         test to check if we can find a contact by phone number and display information
-#         '''
-
-#         self.new_user.save_user()
-#         test_user = User("Test","user","0721830476","pcmaunda@gmail.com","1234") # new user
-#         test_user.save_user()
-
-#         found_user = User.find_by_number("0721830476")
-
-#         self.assertEqual(found_user,test_user.phone_number)
-
-
-#     def test_user_exists(self):
-#         '''
-#         test to check if we can return a Boolean  if we cannot find the cuser.
-#         '''
+    # def test_find_user_by_number(self):
+    #  '''
+    #     test to check if we can find a contact by phone number and display information
+    
 
 #         self.new_user.save_user()
 #         test_user = User("Test","user","0721830476","pcmaunda@gmail.com","1234")

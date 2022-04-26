@@ -3,6 +3,8 @@
 class User:
 
     userlist = []
+    id = 0
+
     def __init__(self, first_name, last_name, phone_number, email,password):
       self.first_name = first_name
       self.last_name = last_name
@@ -11,9 +13,45 @@ class User:
       self.password = password
     
 
-    def save_user(self):
+    def save(self):
+        if len(User.userlist) == 0:
+            self.id = 1
+            User.id  = 1
+            self.userlist.append(self)
+        else:
+            User.id += 1
+            self.id = User.id
+            self.userlist.append(self)
 
-      self.userlist.append(self)
+    @property
+    def full_name(self):
+        return "{} {}".format(self.first_name, self.last_name)
+    
+
+
+    @classmethod
+    def delete_user(cls, id):
+        for user in cls.userlist:
+            if user.id == id:
+                cls.userlist.remove(user)
+                return True
+            else: return False
+
+    # Here we print all contacts in the list as a dictionary
+    # The @classmethod decorator tells python that this method belongs to the class
+    @classmethod
+    def print_users(cls):
+        for user in cls.userlist:
+            print(user.__dict__)
+            
+    # This method allows us to clear the whole list
+    @classmethod
+    def clear_all(cls):
+        if(len(cls.userlist) == 0):
+                return "Empty"
+        else:
+            for user in cls.userlist:
+                cls.userlist.remove(user)
     
     @classmethod
     def delete_user(cls):
