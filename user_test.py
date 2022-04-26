@@ -123,7 +123,7 @@ class TestCredentials(unittest.TestCase):
 
         self.assertEqual(self.new_credential.account_username,"carolyne")
         self.assertEqual(self.new_credential.account_name, "Maunda")
-        self.assertEqual(self.new_credential.account_password,"1234")
+        self.assertEqual(self.new_credential.account_password,"12345")
        
     
     def test_save_credential(self):
@@ -209,8 +209,8 @@ class TestCredentials(unittest.TestCase):
     
     @classmethod
     def copy_email(cls,number):
-        contact_found = User.find_by_number(number)
-        pyperclip.copy(contact_found.email)
+        credential_found = Credentials.find_by_number(number)
+        pyperclip.copy(credential_found.email)
 
 
 
