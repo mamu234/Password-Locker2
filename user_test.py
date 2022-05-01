@@ -1,6 +1,6 @@
 import unittest 
 from user import  Credentials, User
-# import pyperclip
+import pyperclip
 
 class TestUser(unittest.TestCase):
     
@@ -16,18 +16,23 @@ class TestUser(unittest.TestCase):
     def test_instance_creates_successfully(self):
         self.assertTrue(isinstance(self.user, User))
 
-    # Test that contact is saved successfully
+    # Test that user is saved successfully
     def test_save_user(self):
-        self.user.save()
+        self.user.save_user()
         self.assertEqual(len(User.userlist),1)
         self.assertEqual(User.userlist[0].first_name, self.user.first_name)
+
+
+    def copy_email(cls,number):
+        user_found = User.find_by_number(number)
+        pyperclip.copy(user_found.email)
 
     def test_find_all_users(self):
         self.assertEqual(len(User.userlist), len(User.find_all_users()))
 
     # Test that contact information can be updated successfully
     def test_update_user(self):
-        self.user.save()
+        self.user.save_user()
 
     
     def delete_user(self):
