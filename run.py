@@ -1,3 +1,5 @@
+
+from numpy import number
 from user import User
 
 
@@ -19,18 +21,18 @@ def del_user(user):
     '''
    
 
-def find_all_users(number):
+def find_all_users():
     '''
     Function that finds a user by number and returns the user
     '''
-    return User.find_all_users(number)
+    return User.find_all_users()
 
 
-def check_existing_users(number):
+def check_existing_users():
     '''
     Function that check if a user exists with that number and return a Boolean
     '''
-    return User.update_first_name(number)
+    return User.update_first_name()
 
 
 def display_users():
@@ -83,7 +85,7 @@ def main():
                         print('\n')
 
                         for user in display_users(user):
-                         print(f"{user.first_name} {user.last_name} .....{user.phone_number} {email} {password}  ")
+                         print(f"{user.first_name} {user.last_name}....{user.phone_number}")
 
                          print('\n')
                 else:
