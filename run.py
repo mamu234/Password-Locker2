@@ -1,5 +1,6 @@
 
-from numpy import number
+from collections import UserList
+from numpy import number, str_
 from user import User
 
 
@@ -21,14 +22,14 @@ def del_user(user):
     '''
    
 
-def find_all_users():
+def find_all_users(number):
     '''
     Function that finds a user by number and returns the user
     '''
     return User.find_all_users()
 
 
-def check_existing_users():
+def check_existing_users(user):
     '''
     Function that check if a user exists with that number and return a Boolean
     '''
@@ -39,7 +40,7 @@ def display_users():
     '''
     Function that returns all the saved users
     '''
-    return User.display_users()
+    return User.update_phone_number()
   
 
 def main():
@@ -80,7 +81,7 @@ def main():
         
         elif short_code == 'dc':
 
-                if find_all_users():
+                if find_all_users(UserList):
                         print("Here is a list of all your users")
                         print('\n')
 
@@ -97,9 +98,9 @@ def main():
 
                print("Enter the number you want to search for")
 
-               search_number = input()
-               if check_existing_users(search_number):
-                        search_user = find_all_users(search_number)
+               check_existing_users = input()
+               if check_existing_users ():
+                        search_user = check_existing_users()
                         print(f"{search_user.first_name} {search_user.last_name}")
                         print('-' * 20)
 
